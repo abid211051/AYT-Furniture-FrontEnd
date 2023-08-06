@@ -13,7 +13,7 @@ const App = () => {
       path: "/",
       element: <Home/>,
       loader: function(){
-        return fetch(`http://localhost:3000/all-product`)
+        return fetch(`https://final-project-server-node.vercel.app/all-product`)
       }
     },
     {
@@ -28,7 +28,7 @@ const App = () => {
       path:"/manage-product",
       element: <Managefurniture/>,
       loader: function(){
-        return fetch('http://localhost:3000/all-product')
+        return fetch('https://final-project-server-node.vercel.app/all-product')
       }
     },
     {
@@ -39,14 +39,14 @@ const App = () => {
       path:"/single-product/:id",
       element: <Productdetails/>,
       loader: function({params}){
-        return fetch(`http://localhost:3000/single-product/${params.id}`)
+        return fetch(`https://final-project-server-node.vercel.app/single-product/${params.id}`)
       }
     },
     {
       path:"/update-product/:id",
       element : <Updatefurniture/>,
       loader : function({params}){
-        return fetch(`http://localhost:3000/single-product/${params.id}`)
+        return fetch(`https://final-project-server-node.vercel.app/single-product/${params.id}`)
       }
     }
   ])

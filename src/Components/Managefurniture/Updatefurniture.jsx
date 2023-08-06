@@ -36,7 +36,7 @@ const Updatefurniture = () => {
             image: image,
             description: description,
         };
-        fetch(`http://localhost:3000/update-product/${products?._id}`, {
+        fetch(`https://final-project-server-node.vercel.app/update-product/${products?._id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"

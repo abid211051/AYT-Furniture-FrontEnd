@@ -9,7 +9,7 @@ const Managefurniturelist = () => {
     const [furnitures, setFurnitures] = useState(datas);
 
     const deleteproduct = (furnitureID)=>{
-        fetch(`http://localhost:3000/delete-product/${furnitureID}`,{
+        fetch(`https://final-project-server-node.vercel.app/delete-product/${furnitureID}`,{
             method : "DELETE"
         })
         .then((res)=>res.json())

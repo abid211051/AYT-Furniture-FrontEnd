@@ -22,7 +22,7 @@ const Contactinput = () => {
             organization,
             feedback,
         };
-        fetch(`http://localhost:3000/add-contact-info`, {
+        fetch(`https://final-project-server-node.vercel.app/add-contact-info`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

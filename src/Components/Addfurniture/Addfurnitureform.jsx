@@ -34,7 +34,7 @@ const Addfurnitureform = () => {
       image: image,
       description: description,
     };
-    fetch('http://localhost:3000/add-a-product', {
+    fetch('https://final-project-server-node.vercel.app/add-a-product', {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
