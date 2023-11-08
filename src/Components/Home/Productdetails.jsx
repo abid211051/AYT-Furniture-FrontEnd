@@ -12,7 +12,10 @@ const Productdetails = () => {
       <Nav />
       <div className='grid lg:grid-cols-3 grid-cols-1 pt-40 justify-center items-start px-4'>
         <div className='md:col-span-2'>
-          <img src={details?.image} alt="" className='w-[90%]' />
+          <img src={details?.image} onError={({ currentTarget }) => {
+            currentTarget.onerror = null; // prevents looping
+            currentTarget.src = "public/error.png";
+          }} alt="" className='w-[90%]' />
         </div>
         <div>
           <div>

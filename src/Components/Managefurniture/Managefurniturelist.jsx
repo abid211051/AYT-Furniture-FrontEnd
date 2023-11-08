@@ -8,24 +8,24 @@ const Managefurniturelist = () => {
     const datas = useLoaderData();
     const [furnitures, setFurnitures] = useState(datas);
 
-    const deleteproduct = (furnitureID)=>{
-        fetch(`https://final-project-server-node.vercel.app/delete-product/${furnitureID}`,{
-            method : "DELETE"
+    const deleteproduct = (furnitureID) => {
+        fetch(`https://final-project-server-node.vercel.app/delete-product/${furnitureID}`, {
+            method: "DELETE"
         })
-        .then((res)=>res.json())
-        .then((data)=>{
-            if(data.deletedCount > 0){
-                const filterproduct = datas.filter(data => data?._id != furnitureID);
-                setFurnitures(filterproduct);
-            }
-        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.deletedCount > 0) {
+                    const filterproduct = datas.filter(data => data?._id != furnitureID);
+                    setFurnitures(filterproduct);
+                }
+            })
     }
     return (
         <>
             <div className="overflow-x-auto">
                 <p className="text-orange-500 font-bold">MANAGE FFURNITURE</p>
                 <h2 className="text-2xl font-bold mb-10">
-                     MANAGE YOUR PRODUCT HERE
+                    MANAGE YOUR PRODUCT HERE
                 </h2>
                 <table className="table md:w-[93vw] max-w-[93vw] mx-auto">
                     {/* head */}
@@ -44,7 +44,11 @@ const Managefurniturelist = () => {
                                     <div className="flex items-center space-x-3 mr-9">
                                         <div className="avatar">
                                             <div className="mask mask-squircle w-20">
-                                                <img src={furniture?.image} alt="Avatar Tailwind CSS Component" />
+                                                <img src={furniture?.image}
+                                                    onError={({ currentTarget }) => {
+                                                        currentTarget.onerror = null; // prevents looping
+                                                        currentTarget.src = "public/error.png";
+                                                    }} alt="Avatar Tailwind CSS Component" />
                                             </div>
                                         </div>
                                     </div>
@@ -61,11 +65,11 @@ const Managefurniturelist = () => {
                                     <Link to={`/single-product/${furniture._id}`}>
                                         <button className="btn btn-outline"><CgDetailsMore className='w-[70%] h-[70%]' /></button>
                                     </Link>
-                                    <button className="btn btn-outline" onClick={()=>deleteproduct(furniture?._id)}><RiDeleteBin6Line className='w-[70%] h-[70%]' /></button>
+                                    <button className="btn btn-outline" onClick={() => deleteproduct(furniture?._id)}><RiDeleteBin6Line className='w-[70%] h-[70%]' /></button>
                                     <Link to={`/update-product/${furniture._id}`}>
-                                    <button className="btn btn-outline"><RxUpdate className='w-[70%] h-[70%]' /></button>
+                                        <button className="btn btn-outline"><RxUpdate className='w-[70%] h-[70%]' /></button>
                                     </Link>
-                                    
+
                                 </td>
                             </tr>
                         ))}
